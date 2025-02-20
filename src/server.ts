@@ -9,6 +9,7 @@ import {
   ZodTypeProvider,
 } from 'fastify-type-provider-zod'
 import { subscribeToEvent } from './routes/subscribe-to-event'
+import { env } from './env'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -39,6 +40,6 @@ app.get('/hello', () => {
   return 'Hello, world!'
 })
 
-app.listen({ port: 3333 }).then(() => {
+app.listen({ port: env.PORT }).then(() => {
   console.log('HTTP server running on port 3333')
 })
